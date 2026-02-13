@@ -1,0 +1,200 @@
+/* --- FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Dancing+Script:wght@700&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+  
+  /* 2026 PREMIUM PINK LIQUID GRADIENT */
+  background: linear-gradient(135deg, #ff007a, #ff4e91, #ff00cc, #ff85b3);
+  background-size: 300% 300%;
+  animation: liquidBG 10s ease infinite;
+  
+  height: 100vh; 
+  width: 100vw;
+  position: fixed; 
+  top: 0; left: 0;
+  overflow: hidden;
+  touch-action: none;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* PREMIUM NOISE OVERLAY */
+body::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+/* FORCE FULLSCREEN CONFETTI */
+.fullscreen-confetti-wrapper {
+  position: fixed !important;
+  top: 0 !important; left: 0 !important;
+  width: 100vw !important; height: 100vh !important;
+  z-index: 999999 !important;
+  pointer-events: none !important;
+}
+
+/* --- THE PREMIUM GLASS CARD --- */
+.glass-card {
+  /* Ultra-Clear Glass Effect */
+  background: rgba(255, 255, 255, 0.12); 
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+  
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.35); 
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  
+  padding: 25px;
+  width: 100%;
+  max-width: 380px; 
+  max-height: 98vh;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow-y: auto;
+  scrollbar-width: none;
+  z-index: 20;
+}
+
+/* --- THE HUGE PHOTO FRAME --- */
+.photo-frame {
+  width: 100%;
+  height: 55vh; /* Large Viewport Height */
+  min-height: 350px;
+  position: relative;
+  margin-bottom: 25px;
+  border-radius: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* PHOTO BLUR BACKDROP */
+.photo-blur-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: blur(25px) brightness(0.6);
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+/* THE MAIN IMAGE */
+.slide-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Full head visible */
+  z-index: 2;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+}
+
+/* TYPOGRAPHY */
+h1, h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.8rem;
+  margin: 5px 0;
+  background: linear-gradient(to right, #fff, #ffdfef, #ffcde4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.highlight-name {
+  color: #fff;
+  font-size: 3.2rem;
+  font-weight: 800;
+  display: block;
+  margin-top: 10px;
+  text-shadow: 0 0 20px #ff00cc, 0 0 40px #ff1493;
+  animation: glowPulse 2s infinite alternate;
+}
+
+p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.15rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+/* BUTTONS */
+.btn-group {
+  display: flex; gap: 15px; justify-content: center; width: 100%;
+}
+
+button {
+  padding: 16px 45px;
+  font-size: 18px;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease;
+  z-index: 100;
+}
+
+.yes-btn {
+  background: #fff;
+  color: #ff007a;
+  box-shadow: 0 10px 25px rgba(255, 0, 122, 0.4);
+}
+.yes-btn:active { transform: scale(0.92); }
+
+.no-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(5px);
+  /* FAST JUMP TRANSITION */
+  transition: top 0.15s ease, left 0.15s ease; 
+}
+
+@keyframes liquidBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowPulse {
+  from { transform: scale(1); text-shadow: 0 0 20px #ff00cc; }
+  to { transform: scale(1.05); text-shadow: 0 0 30px #ff00cc, 0 0 50px #ff1493; }
+}
+
+/* MOBILE FIX */
+@media (max-width: 480px) {
+  .photo-frame { height: 50vh; }
+  .highlight-name { font-size: 2.8rem; }
+  button { padding: 14px 30px; }
+}
