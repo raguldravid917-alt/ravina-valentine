@@ -7,22 +7,26 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Outfit', sans-serif;
-  background: radial-gradient(circle at 50% 50%, #2b1055, #7597de);
-  background-size: 200% 200%;
-  animation: bgPulse 10s ease infinite;
+  
+  /* 2026 PREMIUM PINK LIQUID GRADIENT */
+  background: linear-gradient(135deg, #ff007a, #ff4e91, #ff00cc, #ff85b3);
+  background-size: 300% 300%;
+  animation: liquidBG 10s ease infinite;
+  
   height: 100vh; 
   width: 100vw;
   position: fixed; 
   top: 0; left: 0;
   overflow: hidden;
   touch-action: none;
+  
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
 }
 
-/* NOISE OVERLAY */
+/* PREMIUM NOISE OVERLAY */
 body::after {
   content: "";
   position: absolute;
@@ -44,30 +48,31 @@ body::after {
   padding: 10px;
 }
 
-/* CONFETTI FIX */
+/* FORCE FULLSCREEN CONFETTI */
 .fullscreen-confetti-wrapper {
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
+  top: 0 !important; left: 0 !important;
+  width: 100vw !important; height: 100vh !important;
   z-index: 999999 !important;
   pointer-events: none !important;
 }
 
 /* --- THE PREMIUM PINK GLASS CARD --- */
 .glass-card {
-  background: rgba(255, 255, 255, 0.12); 
+  /* Ultra-Clear Glass Effect */
+  background: rgba(255, 255, 255, 0.15); 
   backdrop-filter: blur(35px);
   -webkit-backdrop-filter: blur(35px);
+  
   border-radius: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.35); 
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4); 
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  
   padding: 25px;
   width: 100%;
   max-width: 380px; 
-  /* Safe height for mobile screens */
   max-height: 92vh;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -79,11 +84,11 @@ body::after {
 }
 .glass-card::-webkit-scrollbar { display: none; }
 
-/* --- PHOTO FRAME --- */
+/* --- THE PHOTO FRAME --- */
 .photo-frame {
   width: 100%;
-  height: 55vh; 
-  min-height: 350px;
+  height: 45vh; /* Optimized for Mobile/Laptop balance */
+  min-height: 280px;
   position: relative;
   margin-bottom: 25px;
   border-radius: 32px;
@@ -185,25 +190,11 @@ button {
   to { transform: scale(1.05); text-shadow: 0 0 30px #ff00cc, 0 0 50px #ff1493; }
 }
 
-@keyframes bgPulse {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* --- MOBILE FIX: BUTTON HALF VISIBLE FIX --- */
+/* MOBILE FIX */
 @media (max-width: 480px) {
-  .glass-card { 
-    padding: 20px; 
-    max-width: 90%; 
-    max-height: 88vh; /* Slightly reduced to ensure full visibility */
-  }
-  .photo-frame { 
-    height: 45vh; /* Reduced from 55vh to make space for buttons */
-    min-height: 280px; 
-  } 
-  h1, h2 { font-size: 2.2rem; }
-  .highlight-name { font-size: 2.5rem; }
-  button { padding: 12px 30px; font-size: 16px; }
-  p { font-size: 1.05rem; margin-bottom: 15px; }
-  .btn-group { padding-bottom: 10px; }
+  .glass-card { padding: 20px; max-width: 92%; }
+  .photo-frame { height: 42vh; min-height: 250px; }
+  .highlight-name { font-size: 2.8rem; }
+  button { padding: 14px 30px; font-size: 16px; }
+  p { font-size: 1.05rem; }
 }
