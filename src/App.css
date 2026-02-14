@@ -8,12 +8,13 @@ body {
   padding: 0;
   font-family: 'Outfit', sans-serif;
   
-  /* 2026 PREMIUM PINK LIQUID GRADIENT - Body-ah Pink-ku mathியாச்சு */
+  /* 2026 PREMIUM PINK LIQUID GRADIENT */
   background: linear-gradient(135deg, #ff007a, #ff4e91, #ff00cc, #ff85b3);
   background-size: 300% 300%;
   animation: liquidBG 10s ease infinite;
   
-  height: 100vh; 
+  /* --- THE CENTERING FIX: Using 100dvh for Mobile --- */
+  height: 100dvh; 
   width: 100vw;
   position: fixed; 
   top: 0; left: 0;
@@ -38,12 +39,13 @@ body::after {
 
 .container {
   width: 100%;
-  height: 100%;
+  /* Ensures the container is also dynamic height */
+  height: 100dvh;
   position: relative;
   z-index: 10;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; /* This vertically centers the glass-card */
   padding: 10px;
 }
 
@@ -58,23 +60,19 @@ body::after {
   pointer-events: none !important;
 }
 
-/* --- THE ULTIMATE PINK GLASS CARD (KANNADI LOOK) --- */
+/* --- THE PREMIUM PINK GLASS CARD --- */
 .glass-card {
-  /* Ultra-Transparent Pink Tint */
   background: rgba(255, 255, 255, 0.12); 
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
   border-radius: 40px;
-  /* Crystal Glass Edge */
-  border: 1px solid rgba(255, 255, 255, 0.4); 
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2), 
-              inset 0 0 25px rgba(255, 255, 255, 0.15);
-  
+  border: 1px solid rgba(255, 255, 255, 0.35); 
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1);
   padding: 25px;
   width: 100%;
   max-width: 380px; 
-  max-height: 92vh;
+  /* Safe height for mobile screens */
+  max-height: 90dvh; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,8 +92,7 @@ body::after {
   position: relative;
   margin-bottom: 25px;
   border-radius: 32px;
-  /* White Glass Border for Photo */
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   overflow: hidden;
   background: #000;
   display: flex;
@@ -122,13 +119,12 @@ body::after {
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
 }
 
-/* TYPOGRAPHY - Pink Themes */
+/* TYPOGRAPHY */
 h1, h2 {
   font-family: 'Dancing Script', cursive;
   font-size: 2.8rem;
   margin: 5px 0;
-  /* Rose Gold / White Pink Gradient */
-  background: linear-gradient(to right, #ffffff, #ffe0ed, #ffc4e1);
+  background: linear-gradient(to right, #fff, #ffdfef, #ffcde4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
@@ -140,7 +136,6 @@ h1, h2 {
   font-weight: 800;
   display: block;
   margin-top: 10px;
-  /* Neon Pink Glow */
   text-shadow: 0 0 20px #ff00cc, 0 0 40px #ff1493;
   animation: glowPulse 2s infinite alternate;
 }
@@ -152,7 +147,7 @@ p {
   margin-bottom: 25px;
 }
 
-/* BUTTONS - Match the Theme */
+/* BUTTONS */
 .btn-group {
   display: flex; gap: 15px; justify-content: center; width: 100%;
 }
@@ -171,7 +166,7 @@ button {
 
 .yes-btn {
   background: #fff;
-  color: #ff007a; /* Pink Text */
+  color: #ff007a;
   box-shadow: 0 10px 25px rgba(255, 0, 122, 0.4);
 }
 .yes-btn:active { transform: scale(0.92); }
@@ -184,7 +179,6 @@ button {
   transition: top 0.15s ease, left 0.15s ease; 
 }
 
-/* ANIMATIONS */
 @keyframes liquidBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -196,17 +190,23 @@ button {
   to { transform: scale(1.05); text-shadow: 0 0 30px #ff00cc, 0 0 50px #ff1493; }
 }
 
-/* --- MOBILE OPTIMIZATION --- */
+@keyframes bgPulse {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* --- MOBILE SPECIFIC FIXES --- */
 @media (max-width: 480px) {
   .glass-card { 
     padding: 20px; 
     max-width: 90%; 
-    max-height: 88vh;
-    background: rgba(255, 255, 255, 0.15); /* Slightly more opaque for mobile readablity */
+    /* Ensures card is vertically centered and visible above browser bars */
+    max-height: 85dvh; 
   }
   .photo-frame { 
-    height: 45vh; 
-    min-height: 280px; 
+    /* Adjusted height to ensure buttons stay visible without scrolling */
+    height: 40vh; 
+    min-height: 250px; 
   } 
   h1, h2 { font-size: 2.2rem; }
   .highlight-name { font-size: 2.5rem; }
